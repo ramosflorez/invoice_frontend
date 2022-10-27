@@ -1,6 +1,6 @@
 import React, {useState,useEffect} from "react";
 import {Link} from "react-router-dom";
-import "./style.css";
+import "../pages/invoices.css";
 import axios from "axios";
 import { FaRegEye } from "react-icons/fa";
 
@@ -19,7 +19,7 @@ const getClients= async()=>{
 console.log("data=>",data);  
     return(
         <div className="container_all">
-            <div className="body">
+            <div className="body_invoices">
             <Link to={`/create_invoice`}><button className="btn">New Invoice </button></Link>
         <div className="table_container">
             <table className="styled-table">
