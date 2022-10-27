@@ -1,0 +1,136 @@
+
+
+.styled-table_ {
+    border-collapse: collapse;
+    margin: auto;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    width: 100%;
+  }
+  
+  .styled-table_ thead tr {
+    background-color: #2187ab;
+    color: #ffffff;
+  }
+  td {
+    text-align: justify;
+  }
+  
+  .styled-table_ th,
+  .styled-table_ td {
+    padding: 10px 10px 12px 30px;
+  }
+  .styled-table_ tbody tr {
+    border-bottom: 1px solid #dddddd;
+  }
+  .styled-table_ tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+  }
+  .styled-table_ tbody tr:last-of-type {
+    border-bottom: 2px solid #2596be;
+  }
+  
+
+  
+  
+  
+  /*truco*/
+  
+  
+  .table_container_ {
+      overflow-x:auto ;
+      
+         
+    }
+
+form{
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 15px;
+    width: fit-content;
+    text-align: left;
+    box-shadow:0.3em 0.3em 1em rgba(0,0,0,0.3);
+    padding: 0px 25px 18px 25px;
+
+
+}
+.invoice_info_client{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap:15px;
+
+}
+.invoice_container{
+    display: flex;
+    justify-content: center;
+}
+.save{
+    width: fit-content;
+    margin: 0 0 0 auto;
+    border: none;
+    color: white;
+    background-color: #2596be;
+    padding: 5px 12px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+
+    cursor: pointer;
+}
+.invoice_body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 75px;
+    margin-bottom: 75px;
+}
+
+.invoice_body h1{
+    text-align: center;
+}
+
+.invoice_body input{
+    width: 150px;
+    height: 24px;
+    padding: 0px;
+    
+
+}
+.invoice_body select{
+    width: 150px;
+    height: 28px;
+    padding: 0px;
+    
+
+}
+.invoice_product_add{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+
+}
+.add {
+    border: none;
+    color: white;
+    background-color: #2596be;
+    padding: 5px 12px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    margin: auto;
+    cursor: pointer;
+    width: fit-content;
+
+}
+
+.calculation{
+    display: grid;
+    grid-template-columns: 1fr 1fr ;
+    gap: 15px;
+    font-weight: bold;
+    font-size: 13px;
+
+}

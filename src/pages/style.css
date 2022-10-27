@@ -1,0 +1,73 @@
+.body {
+  display: flex;
+  flex-direction: column;
+  max-width: 800px;
+  margin: auto;
+}
+
+/* Este es LINK */
+.body a {
+  display: flex;
+  margin-bottom: 15px;
+  text-decoration: none;
+}
+
+.styled-table_clients {
+  border-collapse: collapse;
+  /* margin: auto; */
+  font-size: 0.9em;
+  font-family: sans-serif;
+  max-width: 800px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.styled-table_clients thead tr {
+  background-color: #2187ab;
+  color: #ffffff;
+}
+td {
+  text-align: justify;
+}
+
+.styled-table_clients th,
+.styled-table_clients td {
+  padding: 10px 10px 12px 30px;
+}
+.styled-table_clients tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+.styled-table_clients tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+.styled-table_clients tbody tr:last-of-type {
+  border-bottom: 2px solid #2596be;
+}
+
+.btn_clients {
+  border: none;
+  color: white;
+  background-color: #2596be;
+  padding: 5px 8px;
+  text-align: center;
+  text-decoration: none;
+  /* margin: 15px; */
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+
+
+/*truco*/
+
+
+.table_container_clients {
+    overflow-x:auto ;
+       
+  }
+.container_all_clients{
+    margin: 75px 22px 75px 22px;
+    
+}
+
+
