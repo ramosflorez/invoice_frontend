@@ -5,9 +5,7 @@ import { useParams } from "react-router-dom";
 
 const Details = () => {
   const [data, setData] = useState([]);
-  useEffect(() => {
-    getDetails();
-  }, []);
+
   const id = useParams();
   const getDetails = async () => {
     const response = await axios.get(
@@ -15,7 +13,7 @@ const Details = () => {
     );
     if (response.status === 200) {
       setData(response.data);
-      console.log("DETALLES=>", response.data);
+
     }
   };
 
@@ -29,9 +27,7 @@ const Details = () => {
       total: 0,
     },
   ]);
-  useEffect(() => {
-    getInvoice();
-  }, []);
+
 
   const getInvoice = async () => {
     const response = await axios.get(
@@ -40,19 +36,36 @@ const Details = () => {
     if (response.status === 200) {
       setinvoice(response.data);
     }
-    console.log("factura", response.data);
+
   };
+  useEffect(() => {
+    getInvoice();
+    getDetails();
+  });
 
   return (
     <div className="invoice_body">
       <div className="form">
-        <h1>INVOICE</h1>
-        <div className="invoice_info">
-            <label>No Invoice {invoice[0].Invoice_ID}</label>
-          <div className="invoice_info_client">
-            <label>Date:{invoice[0].date_}</label>
-            <label>Client:{invoice[0].Client_name}</label>
+        <div className="company-info">
+        <h1 className="title">INVOICE</h1>
+        <img loading="lazy" width="241" height="54" src="https://aimedgeapps.com/wp-content/uploads/2021/12/Captura-de-pantalla-2021-12-15-131916.jpg" alt="" className="img-logo"/>
+        </div>
+       
+        <div className="invoice-info">
+        <div className="invoice_info_client_details">
+            <h4 className="Subtitle">Bill To:</h4>
+            <label>{invoice[0].Client_name}</label>
           </div>
+          <div className="invoice-details_">
+            <h4 className="Subtitle">Invoice Details</h4>
+            <div className="text">
+              <label>Date:{invoice[0].date_}</label>
+              <label>Invoice No. {invoice[0].Invoice_ID}</label>
+            </div>
+
+          </div>
+            
+
         </div>
 
         <div className="table_container_Details">

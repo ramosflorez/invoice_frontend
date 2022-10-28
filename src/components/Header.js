@@ -18,7 +18,7 @@ const Header = () => {
 
   return (
     <header>
-        <div class="image-container">
+        <div className="image-container">
             <img loading="lazy" width="241" height="54" src="https://aimedgeapps.com/wp-content/uploads/2021/12/Captura-de-pantalla-2021-12-15-131916.jpg" alt="" />
         </div>
         

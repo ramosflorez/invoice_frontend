@@ -16,7 +16,7 @@ const getClients= async()=>{
         setData(response.data);
     }
 }; 
-console.log("data=>",data);  
+
     return(
         <div className="container_all">
             <div className="body_invoices">
@@ -31,7 +31,7 @@ console.log("data=>",data);
                         <th style={{ textAling: "center" }}>Subtotal</th>
                         <th style={{ textAling: "center" }}>Discount</th>
                         <th style={{ textAling: "center" }}>Total</th>
-                        <th style={{ textAling: "center" }}>View</th>
+                        <th style={{ textAling: "center" }}>Action</th>
                     </tr>
                 </thead>
                 <tbody>

@@ -55,12 +55,7 @@
 
 
 }
-.invoice_info_client{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap:15px;
 
-}
 .invoice_container{
     display: flex;
     justify-content: center;
@@ -134,4 +129,49 @@
     font-weight: bold;
     font-size: 13px;
 
+}
+.Subtitle{
+  margin-block-end: 12px;
+  margin-block-start: 12px;
+}
+.text{
+  display: grid;
+  grid-template-columns: 1fr  ;
+
+}
+.invoice-info{
+  display: grid;
+  grid-template-columns: 1fr 1fr ;
+  gap: 10px;
+}
+.invoice-details_{
+  margin-left: 70px;
+}
+.company-info{
+  display: grid;
+  grid-template-columns: 1fr 1fr ;
+  gap: 10px;
+}
+.img-logo{
+  margin-top: 15px;
+}
+@media screen and (max-width:461px){
+  .img-logo{
+    width: 200px;
+  }
+  .invoice-info{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .invoice-details_{
+    margin-left: 0px;
+  }
+}
+@media screen and (max-width:377px){
+  .img-logo{
+    display: none;
+  }
+
+  
 }

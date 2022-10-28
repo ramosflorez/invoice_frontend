@@ -15,10 +15,10 @@ const Clients=()=>{
             setData(response.data);
         }
     }; 
-    console.log("data=>",data);   
+
     return(
         <div className="container_all_clients">
-            <div class="body">
+            <div className="body">
                 <Link to={`/create_invoice`}><button className="btn_clients">New Invoice </button></Link>
                 <div className="table_container_clients">
                     <table className="styled-table_clients">

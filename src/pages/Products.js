@@ -14,7 +14,7 @@ const Products = () => {
       setData(response.data);
     }
   };
-  console.log("data=>", data);
+
   return (
     <div className="container_all">
       <div className="table_container">

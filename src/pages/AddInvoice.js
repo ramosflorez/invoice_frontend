@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../pages/AddInvoice.css";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { FaTrashAlt } from "react-icons/fa";
 
 const AddInvoice = () => {
   const [items, setItems] = useState([]);
@@ -13,19 +14,27 @@ const AddInvoice = () => {
     total:0
   });
   
-
+  const RemoveProduct=(id)=>{
+    let newList;
+     newList=items.filter((item_prod)=>item_prod.product.Product_ID!==id);
+     setItems(newList)
+     CalculationUpdate(newList)
+    
+  };
   function RenderProducts(item) {
     const quantity = item.quantity;
     const price = item.product.Price;
     const amount = quantity * price;
     const product_name = item.product.Product_name;
+    
 
     return (
-      <tr>
+      <tr key={item.product.Product_ID}>
         <td>{product_name}</td>
         <td>${price}.00</td>
         <td>{quantity}</td>
         <td>${amount}</td>
+        <td ><FaTrashAlt  onClick={()=>RemoveProduct(item.product.Product_ID)}/></td>
       </tr>
     );
   }
@@ -44,8 +53,7 @@ const AddInvoice = () => {
     } else {
       total = subtotal;
     }
-    console.log("total=>", total);
-    console.log("discount=>", discount);
+
     setdiscount({
       subtotal,
       discount,
@@ -54,7 +62,7 @@ const AddInvoice = () => {
 
     
   }
-  function Calculation2(list){
+  function CalculationUpdate(list){
     let subtotal = 0;
     let total=0;
     
@@ -73,27 +81,27 @@ const AddInvoice = () => {
   }
 
   const add = () => {
-    const products_select = document.getElementById("produts_select");
+    const products_select = parseInt(document.getElementById("produts_select").value);
+
     let quantity = parseInt(document.getElementById("product_quantity").value);
     if (isNaN(quantity)) {
       quantity = 0;
     }
     
     if (items.length <= 9) {
-      if (products_select.value !== 0 && quantity !== 0) {
+      if (products_select !== 0 && quantity !== 0) {
         const product = data.find(
-          (item) => item.Product_ID == products_select.value
+          (item) => item.Product_ID === products_select
         );
         const same_product = items.find(
-          (item) => item.product.Product_ID == products_select.value
+          (item) => item.product.Product_ID === products_select
         );
-        if (quantity !== 0) {
-          
-          
+        if (quantity !== 0) {          
           if (!same_product) {
             const Products_list=[...items, { product, quantity: quantity }];
-            Calculation2(Products_list)
+            CalculationUpdate(Products_list)
             setItems(Products_list);
+            
           } else {
 
             const new_product = items.map((item) => {
@@ -102,7 +110,7 @@ const AddInvoice = () => {
               }
               return item;
             });
-            Calculation2(new_product);
+            CalculationUpdate(new_product);
             setItems(new_product);
           }
           
@@ -143,7 +151,7 @@ const AddInvoice = () => {
       items.length !== 0 &&
       date !== "" &&
       subtotal !== 0 &&
-      total !== 0
+      discount <= 100
     ) {
       const response = await axios.post(
         `${process.env.REACT_APP_HOST}invoice`,
@@ -155,7 +163,7 @@ const AddInvoice = () => {
           total: total,
         }
       );
-      console.log(response.data);
+
 
       const response_product = await axios.post(
         `${process.env.REACT_APP_HOST}details/${response.data}`,
@@ -163,14 +171,14 @@ const AddInvoice = () => {
           items: JSON.stringify(items),
         }
       );
-      console.log(response_product);
+
 
       if (response.status === 200 && response_product.status === 200) {
         toast.success("Successful registration");
 
         setTimeout(function () {
           window.location.href = `http://localhost:3000/invoices`;
-        }, 5000);
+        }, 1000);
       } else {
         toast.error("AN ERROR HAS OCCURRED");
       }
@@ -222,7 +230,7 @@ const AddInvoice = () => {
                 defaultValue={date()}
                 max={date()}
                 min="2022-01-01"
-                onChange={(event) => this.add(event)}
+                
               />
             </label>
             <label>
@@ -292,6 +300,7 @@ const AddInvoice = () => {
                 <th style={{ textAling: "center" }}>Price</th>
                 <th style={{ textAling: "center" }}>Quantity</th>
                 <th style={{ textAling: "center" }}>Amount</th>
+                <th style={{ textAling: "center" }}>Action</th>
               </tr>
             </thead>
             <tbody>
@@ -301,7 +310,7 @@ const AddInvoice = () => {
             </tbody>
           </table>
         </div>
-        <div className="calculation"><div></div>
+        <div className="calculation">
         <div className="container_cal">
             <div className="subtotal_label"><label>SUBTOTAL $</label>
             {discount.subtotal}</div>
@@ -311,7 +320,7 @@ const AddInvoice = () => {
             {discount.total}</div>
         
       </div></div>
-        <button className="save" type="submit">
+        <button className="save" type="submit" >
           SAVE INVOICE
         </button>
       </form>
